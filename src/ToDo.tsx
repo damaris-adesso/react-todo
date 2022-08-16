@@ -28,8 +28,8 @@ function ToDo() {
     setTodo("");
   };
 
-  function handleRemove(index: number) {
-    const newList = list.filter((item, key) => key !== index);
+  function handleRemove(id: number) {
+    const newList = list.filter((item) => item.id !== id);
     setList(newList);
   }
 
@@ -44,9 +44,8 @@ function ToDo() {
           return (
             <ToDoItem
               key={key}
-              item={listItem.todo}
+              item={listItem}
               removeItem={handleRemove}
-              index={key}
             />
           );
         })}

@@ -6,16 +6,25 @@ import ToDoItem from "./components/ToDoItem";
 function ToDo() {
   const [todo, setTodo] = useState("");
   const [list, setList] = useState([
-    { todo: "clean the house" },
-    { todo: "buy milk" },
+    { todo: "clean the house", id: 1 },
+    { todo: "buy milk", id: 2 },
   ]);
+
+  const generateId = () => {
+    if (list && list.length) {
+      return Math.max(...list.map((t) => t.id)) + 1;
+    } else {
+      return 1;
+    }
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTodo(event.target.value);
   };
 
   const addItemToList = () => {
-    setList([...list, { todo: todo }]);
+    const newId = generateId();
+    setList([...list, { todo: todo, id: newId }]);
     setTodo("");
   };
 

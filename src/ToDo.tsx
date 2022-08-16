@@ -40,10 +40,10 @@ function ToDo() {
           <img src={logo} className="Logo" alt="logo" />
           <h2 className="Headline">React To Do</h2>
         </header>
-        {list.map((listItem, key) => {
+        {list.map((listItem) => {
           return (
             <ToDoItem
-              key={key}
+              key={listItem.id}
               item={listItem}
               removeItem={handleRemove}
             />

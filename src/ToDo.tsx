@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { KeyboardEvent, useState } from "react";
 import "./ToDo.css";
 import logo from "./logo.svg";
 import ToDoItem from "./components/ToDoItem";
@@ -33,6 +33,12 @@ function ToDo() {
     setList(newList);
   }
 
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      addItemToList();
+    }
+  };
+
   return (
     <div className="ToDo">
       <div className="ToDo-Container">
@@ -50,7 +56,13 @@ function ToDo() {
           );
         })}
         <div>
-          <input type="text" value={todo} onChange={handleChange} />
+          <input
+            type="text"
+            value={todo}
+            onChange={handleChange}
+            onKeyPress={handleKeyPress}
+            placeholder="I need to ..."
+          />
           <button className="ToDo-Add" onClick={addItemToList}>
             +
           </button>

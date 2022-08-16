@@ -23,6 +23,9 @@ function ToDo() {
   };
 
   const addItemToList = () => {
+    if (todo === "") {
+      return;
+    }
     const newId = generateId();
     setList([...list, { todo: todo, id: newId }]);
     setTodo("");

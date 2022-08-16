@@ -16,12 +16,13 @@ function ToDo() {
 
   const addItemToList = () => {
     setList([...list, { todo: todo }]);
+    setTodo("");
   };
 
   function handleRemove(index: number) {
     const newList = list.filter((item, key) => key !== index);
     setList(newList);
-  };
+  }
 
   return (
     <div className="ToDo">
